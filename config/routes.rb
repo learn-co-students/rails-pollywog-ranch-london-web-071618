@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/ponds/:id/destroy', to: 'ponds#destroy'
   get '/frogs/:id/destroy', to: 'frogs#destroy'
   get '/tadpoles/:id/destroy', to: 'tadpoles#destroy'
+  get '/tadpoles/:id/metamorphose', to: 'tadpoles#metamorphose'
 
+  post '/tadpoles/:id/metamorphose', to: 'tadpoles#metamorphose'
   # code your post to  '/tadpoles/:id/metamorphose' here
   # it should direct to the tadpoles controller, the metamorphose action
 
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
 
   # nested resources
   resources :frogs do
-    resources :tadpoles, :only => [:new]
+  resources :tadpoles, :only => [:new]
   end
 
 end
