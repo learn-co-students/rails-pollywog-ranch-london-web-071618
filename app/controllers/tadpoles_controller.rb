@@ -48,14 +48,9 @@ class TadpolesController < ApplicationController
   end
 
   def metamorphose
-    @frog = Frog.new(name: @tadpole.name, color: @tadpole.color, pond: @tadpole.pond)
-    if @frog.valid?
-        @frog.save
-        @tadpole.destroy
-       redirect_to frog_path(@frog)
-     else
-       render :show
-     end
+    @frog = Frog.create(name: @tadpole.name, color: @tadpole.color, pond: @tadpole.pond)
+    @tadpole.destroy
+    redirect_to frog_path(@frog)
   end
 
   private
